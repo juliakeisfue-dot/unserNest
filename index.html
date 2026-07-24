@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Unser Nest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007aff">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- iOS Homescreen -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Unser Nest">
+  <link rel="apple-touch-icon" href="icons/192x192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/192x192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="icons/512x512.png">
+
+  <!-- Favicon (CSP-sicher als korrekt codierte data-URI) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns%3D%27http%3A//www.w3.org/2000/svg%27 viewBox%3D%270 0 100 100%27%3E%3Ctext y%3D%27.9em%27 font-size%3D%2790%27%3E%F0%9F%8F%A1%3C/text%3E%3C/svg%3E">
+  <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns%3D%27http%3A//www.w3.org/2000/svg%27 viewBox%3D%270 0 100 100%27%3E%3Ctext y%3D%27.9em%27 font-size%3D%2790%27%3E%F0%9F%8F%A1%3C/text%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg: #f4f4f7;
+      --card: #ffffff;
+      --accent: #007aff;
+      --accent-soft: #e5f0ff;
+      --border: #ddd;
+      --text: #222;
+      --text-soft: #666;
+      --success: #34c759;
+      --warning: #ff9500;
+      --danger: #ff3b30;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app { max-width: 900px; margin: 0 auto; padding: 16px; }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .header__title { font-size: 1.4rem; margin: 0; }
+    .header__subtitle { font-size: 0.75rem; color: var(--text-soft); }
+    
+     .status {
+       font-size: 0.9rem;
+       padding: 6px 12px;
+       border-radius: 12px;
+       background: rgba(0, 0, 0, 0.05);
+       font-weight: 500;
+       min-width: 140px;
+       text-align: center;
+     }
+     .status--online {
+       color: var(--success);
+       background: rgba(52, 199, 89, 0.1);
+     }
+     .status--offline {
+       color: var(--danger);
+       background: rgba(255, 59, 48, 0.1);
+       font-weight: 600;
+       animation: pulse 2s infinite;
+     }
+     .status--warning {
+       color: var(--warning);
+       background: rgba(255, 149, 0, 0.1);
+     }
+     @keyframes pulse {
+       0%, 100% { opacity: 1; }
+       50% { opacity: 0.6; }
+     }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav__btn {
+      padding: 8px 16px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-soft);
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .nav__btn--active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .card__title {
+      font-size: 1.1rem;
+      margin: 0 0 8px 0;
+    }
+
+    .card__subtitle {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+
+    /* User Bar */
+    .user-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px;
+      background: #f8f8fb;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+
+    .user-bar__label {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .user-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .user-btn {
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .user-btn--active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .user-btn__points {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      margin-left: 4px;
+    }
+
+    /* Forms */
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form__row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .form__input {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.85rem;
+      touch-action: manipulation;
+    }
+
+    .btn:active { transform: scale(0.96); }
+
+    .btn--primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn--success {
+      background: var(--success);
+      color: #fff;
+      border-color: var(--success);
+    }
+
+    .btn--danger {
+      background: var(--danger);
+      color: #fff;
+      border-color: var(--danger);
+    }
+
+    .btn--small {
+      padding: 4px 12px;
+      font-size: 0.75rem;
+    }
+
+    .btn--tiny {
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      min-height: 32px;
+      line-height: 1;
+    }
+
+    .btn--block {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Items */
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      background: #fff;
+    }
+
+    .item--open { border-left: 4px solid var(--accent); }
+    .item--done { border-left: 4px solid var(--success); background: #f8fff8; }
+
+    .item__content { flex: 1; }
+    .item__name { font-weight: 500; }
+    .item__meta { font-size: 0.8rem; color: var(--text-soft); }
+
+    .item__actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    /* Sections */
+    .section { display: none; }
+    .section--active { display: block; }
+
+    /* Empty State */
+    .empty {
+      text-align: center;
+      padding: 32px;
+      color: var(--text-soft);
+    }
+
+    .empty__icon { font-size: 2rem; margin-bottom: 8px; }
+
+    /* Progress */
+    .progress {
+      margin-bottom: 16px;
+    }
+
+    .progress__bar {
+      height: 8px;
+      background: #eee;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress__fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #5856d6);
+      transition: width 0.3s;
+    }
+
+    .progress__label {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-top: 4px;
+    }
+
+    /* Toast */
+    .toast-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast {
+      background: rgba(0,0,0,0.85);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      animation: toastIn 0.3s ease;
+      pointer-events: auto;
+    }
+
+    @keyframes toastIn {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Setup Screen */
+    .setup { max-width: 400px; margin: 0 auto; padding-top: 40px; }
+    
+    .setup__title { margin-bottom: 8px; }
+    .setup__text { color: var(--text-soft); margin-bottom: 24px; }
+
+    .field { margin-bottom: 16px; }
+    .field__label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      color: var(--text-soft);
+    }
+    .field__input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+
+    /* Utility */
+    .text--small { font-size: 0.8rem; }
+    .text--soft { color: var(--text-soft); }
+    .mb--1 { margin-bottom: 8px; }
+    .mb--2 { margin-bottom: 16px; }
+    
+    /* Quest Styles */
+    .quest {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      background: #fff;
+    }
+    
+    .quest--completed {
+      opacity: 0.6;
+      background: #f8fff8;
+    }
+    
+    .quest__title {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    
+    .quest__desc {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+    
+    .quest__points {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+    .quest__actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    
+    /* Inventory */
+    .location {
+      margin-bottom: 16px;
+    }
+    
+    .location__header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    
+    .location__name {
+      font-weight: 600;
+    }
+    
+    .location__count {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-left: auto;
+    }
+    
+    .inventory-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .inventory-item:last-child {
+      border-bottom: none;
+    }
+
+    /* Bill Upload */
+    .bill-upload {
+      border: 2px dashed var(--accent);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      background: var(--accent-soft);
+    }
+
+    .bill-upload__label {
+      cursor: pointer;
+      display: block;
+    }
+
+    .bill-upload__btn {
+      padding: 12px;
+    }
+
+    .bill-upload__btn:hover {
+      opacity: 0.8;
+    }
+
+    .bill-item {
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { width: 0%; }
+      50% { width: 100%; }
+    }
+
+    /* ── Speiseplan ─────────────────────────────────────── */
+    .mealplan-week-table-wrap {
+      overflow-x: auto;
+    }
+
+    .mealplan-week-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      min-width: 760px;
+    }
+
+    .mealplan-week-table th,
+    .mealplan-week-table td {
+      padding: 8px;
+      text-align: center;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .mealplan-week-table__today {
+      background: var(--accent-soft);
+    }
+
+    .mealplan-week-table__meal {
+      font-weight: bold;
+      background: var(--accent-soft);
+      white-space: nowrap;
+    }
+
+    .mealplan-week-table__slot {
+      min-height: 100px;
+    }
+
+    .mealplan-day-mode {
+      padding: 12px;
+    }
+
+    .mealplan-empty-slot {
+      text-align: center;
+      padding: 8px;
+    }
+
+    .mealplan-add-btn {
+      min-height: 44px;
+      font-weight: 600;
+    }
+
+    .recipe-selector__item {
+      min-height: 44px;
+      justify-content: flex-start;
+    }
+
+    .mealplan-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      overflow-x: auto;
+    }
+
+    @media (max-width: 700px) {
+      .mealplan-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 420px) {
+      .mealplan-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .mealplan-day {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px;
+      min-width: 110px;
+    }
+
+    .mealplan-day--today {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent-soft);
+    }
+
+    .mealplan-day__header {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+    }
+
+    .mealplan-day__name {
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .mealplan-day__date {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+    }
+
+    .mealplan-day__date--today {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .mealplan-slot {
+      background: #f8f8fb;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 6px;
+      margin-bottom: 6px;
+      font-size: 0.8rem;
+    }
+
+    .mealplan-slot--filled {
+      background: var(--accent-soft);
+      border-style: solid;
+      border-color: var(--accent);
+    }
+
+    .mealplan-slot--cooked {
+      background: #f0fff4;
+      border-color: var(--success);
+    }
+
+    .mealplan-slot--drag-from {
+      opacity: 0.6;
+      background: var(--warning);
+      background: rgb(255, 149, 0);
+      border-color: var(--warning);
+      box-shadow: 0 0 8px rgba(255, 149, 0, 0.4);
+    }
+
+    .mealplan-slot--drag-over {
+      background: var(--success);
+      background: rgba(52, 199, 89, 0.2);
+      border-color: var(--success);
+      border-width: 2px;
+      box-shadow: 0 0 8px rgba(52, 199, 89, 0.4);
+    }
+
+    .mealplan-slot__meal {
+      font-size: 0.7rem;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .mealplan-slot__recipe {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mealplan-slot__recipe-name {
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .mealplan-slot__recipe-name--cooked {
+      text-decoration: line-through;
+      color: var(--text-soft);
+    }
+
+    .mealplan-slot__actions {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .mealplan-slot__missing {
+      font-size: 0.7rem;
+      color: var(--warning);
+    }
+
+    .mealplan-slot__add {
+      width: 100%;
+      background: transparent;
+      border: 1px dashed var(--accent);
+      color: var(--accent);
+      font-size: 0.75rem;
+      padding: 4px;
+      border-radius: 6px;
+    }
+
+    /* Bewertung */
+    .mealplan-slot__rating {
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .mealplan-slot__stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .mealplan-star-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.5;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .mealplan-star-btn:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .mealplan-star-btn--active {
+      opacity: 1;
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .mealplan-slot__avg {
+      font-size: 0.7rem;
+      color: var(--text-soft);
+    }
+
+    /* Picker Overlay */
+    .mealplan-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .mealplan-picker {
+      background: var(--card);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 420px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    }
+
+    .mealplan-picker__header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mealplan-picker__header strong { flex: 1; }
+
+    .mealplan-picker__list {
+      overflow-y: auto;
+      padding: 8px;
+    }
+
+    .mealplan-picker__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      gap: 8px;
+      transition: background 0.15s;
+    }
+
+    .mealplan-picker__item:hover {
+      background: var(--accent-soft);
+    }
+
+    /* Nuclear Reset Button -->
+    .nuclear-reset {
+      position: fixed;
+      top: calc(10px + env(safe-area-inset-top, 0px));
+      right: calc(10px + env(safe-area-inset-right, 0px));
+      z-index: 9999;
+      opacity: 0.85;
+      font-size: 13px;
+      min-height: 44px;
+      min-width: 44px;
+      padding: 10px 12px;
+      background: var(--danger);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .nuclear-reset:hover {
+      opacity: 1;
+    }
+
+    /* Dialog Modal */
+    .dialog-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dialog-overlay--active {
+      display: flex;
+    }
+
+    .dialog {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .dialog__title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      color: var(--text);
+    }
+
+    .dialog__message {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .dialog__input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      font-family: inherit;
+    }
+
+    .dialog__input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .dialog__buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    .dialog__button {
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .dialog__button:hover {
+      background: var(--bg);
+    }
+
+    .dialog__button--primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .dialog__button--primary:hover {
+      background: #0051d5;
+    }
+
+    .dialog__button--danger {
+      background: var(--danger);
+      color: #fff;
+      border-color: var(--danger);
+    }
+
+    .dialog__button--danger:hover {
+      background: #e82418;
+    }
+
+    /* Help UI */
+    .help__tab {
+      padding: 8px 16px;
+      border: none;
+      background: transparent;
+      color: var(--text-soft);
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .help__tab:hover {
+      background: var(--bg);
+    }
+
+    .help__tab--active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .help__item {
+      padding: 8px 12px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-soft);
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .help__item:hover {
+      background: var(--bg);
+      color: var(--accent);
+    }
+
+    .help__item--active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .help__content {
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .help__content h1,
+    .help__content h2,
+    .help__content h3 {
+      color: var(--accent);
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    .help__content h1 {
+      font-size: 1.5rem;
+    }
+
+    .help__content h2 {
+      font-size: 1.3rem;
+    }
+
+    .help__content h3 {
+      font-size: 1.1rem;
+    }
+
+    .help__content code {
+      background: var(--bg);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+
+    .help__content pre {
+      background: var(--bg);
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border-left: 3px solid var(--accent);
+    }
+
+    .help__content strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .help__content ul {
+      margin: 16px 0;
+      padding-left: 24px;
+    }
+
+    .help__content li {
+      margin: 8px 0;
+    }
+
+    .help__content a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .help__content a:hover {
+      opacity: 0.8;
+    }
+
+    .help__root {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .help__header {
+      padding: 16px;
+      background: var(--accent-soft);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .help__tabs {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .help__layout {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      min-height: 60vh;
+    }
+
+    .help__sidebar {
+      border-right: 1px solid var(--border);
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    .help__sidebar-title {
+      margin: 0 0 12px 0;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .help__sidebar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .help__item {
+      width: 100%;
+      text-align: left;
+      white-space: normal;
+      word-break: break-word;
+      hyphens: auto;
+      line-height: 1.3;
+    }
+
+    .help__article {
+      min-width: 0;
+      padding: 24px;
+      overflow-wrap: anywhere;
+    }
+
+    .help__content p {
+      margin: 12px 0;
+    }
+
+    .help__content ol {
+      margin: 16px 0;
+      padding-left: 24px;
+    }
+
+    .help__status {
+      margin: 6px 0;
+    }
+
+    .help__status--ok {
+      color: var(--success);
+    }
+
+    .help__status--bad {
+      color: var(--danger);
+    }
+
+    .help__arrow {
+      margin: 8px 0;
+      padding-left: 12px;
+      border-left: 3px solid var(--accent);
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 720px) {
+      .help__layout {
+        grid-template-columns: 1fr;
+      }
+
+      .help__sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .help__article {
+        padding: 16px;
+      }
+
+      .help__tabs {
+        padding: 8px 12px;
+      }
+    }
+
+    /**  Analytics & Documentation Styles **/
+    .analytics-container,
+    .documentation-container {
+      padding: 16px;
+      background: var(--card);
+      border-radius: 12px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .stat-card {
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      margin-top: 4px;
+    }
+
+    .doc-section,
+    .section {
+      margin: 24px 0;
+    }
+
+    .doc-section h2,
+    .doc-section h3 {
+      color: var(--accent);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .feature-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      transition: all 0.2s;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 122, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .feature-card h3 {
+      margin: 0 0 8px 0;
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    .feature-card p {
+      margin: 8px 0;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    .feature-meta {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .status-badge,
+    .category-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .status-badge.status-fertig {
+      background: rgba(52, 199, 89, 0.2);
+      color: #27ae60;
+    }
+
+    .status-badge.status-planung {
+      background: rgba(255, 149, 0, 0.2);
+      color: #ff9500;
+    }
+
+    .status-badge.status-inarbeit {
+      background: rgba(0, 122, 255, 0.2);
+      color: var(--accent);
+    }
+
+    .category-badge {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .analytics-table,
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+
+    .analytics-table th,
+    .doc-table th {
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .analytics-table td,
+    .doc-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .analytics-table tbody tr:hover,
+    .doc-table tbody tr:hover {
+      background: var(--bg);
+    }
+
+    .feature-detail {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .feature-detail pre {
+      background: #f5f5f5;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+    }
+
+    .trend-chart {
+      background: var(--bg);
+      padding: 16px;
+      border-radius: 12px;
+      font-family: monospace;
+      font-size: 0.85rem;
+    }
+
+    .stats-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .stats-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-list strong {
+      color: var(--accent);
+    }
+
+    .stats-list li:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dialog Modals -->
+  <div class="dialog-overlay" id="dialogOverlay">
+    <div class="dialog">
+      <h3 class="dialog__title" id="dialogTitle"></h3>
+      <p class="dialog__message" id="dialogMessage"></p>
+      <input type="text" class="dialog__input" id="dialogInput" style="display:none;">
+      <div class="dialog__buttons">
+        <button class="dialog__button" id="dialogBtnCancel">Abbrechen</button>
+        <button class="dialog__button dialog__button--primary" id="dialogBtnOk">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Nuclear Reset Button -->
+  <button class="nuclear-reset" id="nuclearReset" title="Cache löschen & neu laden">
+    🧹 Reset
+  </button>
+
+  <div class="app">
+    <!-- SETUP -->
+    <div id="setupScreen" class="setup">
+      <h1 class="setup__title">🏡 Unser Nest</h1>
+      <p class="setup__text">Haushalt, Vorräte, Aufgaben & Belohnungen</p>
+      
+      <div class="field">
+        <label class="field__label">Name des Zuhauses</label>
+        <input type="text" id="homeName" class="field__input" placeholder="z.B. Villa Kunterbunt">
+      </div>
+      
+      <div class="field">
+        <label class="field__label">Dein Name</label>
+        <input type="text" id="userName" class="field__input" placeholder="z.B. Julia, Christian, Helena, Elisabeth">
+      </div>
+      
+      <button id="btnCreateHome" class="btn btn--primary">Los geht's</button>
+    </div>
+
+    <!-- MAIN APP -->
+    <div id="mainApp" style="display:none;">
+      <header class="header">
+        <div>
+          <h1 class="header__title">🏡 <span id="displayHomeName">Unser Nest</span></h1>
+          <div class="header__subtitle">Haushalt, Vorräte, Aufgaben & Belohnungen</div>
+        </div>
+        <div style="text-align:right;">
+          <div id="cloudStatus" class="status">🟡 Initialisiere...</div>
+          <div style="margin-top:4px;">
+            <button id="btnCloudSetup" class="btn btn--small">Cloud Setup</button>
+            <button id="btnForceSync" class="btn btn--small">🔄 Sync</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- USER BAR -->
+      <div id="userBar" class="user-bar">
+        <div class="user-bar__label">👋 Wer bist du?</div>
+        <div id="userList" class="user-list"></div>
+        <div id="userHint" class="text--small text--soft"></div>
+      </div>
+
+       <!-- NAVIGATION -->
+       <nav class="nav">
+         <button class="nav__btn" data-section="shopping">🛒 Einkauf</button>
+         <button class="nav__btn" data-section="inventory">📦 Vorräte</button>
+         <button class="nav__btn" data-section="recipes">🍳 Rezepte</button>
+         <button class="nav__btn" data-section="mealplan">📅 Speiseplan</button>
+         <button class="nav__btn" data-section="reisekasse">💰 Reisekasse</button>
+         <button class="nav__btn" data-section="quests">🎯 Quests</button>
+         <button class="nav__btn" data-section="tasks">📝 Aufgaben</button>
+         <button class="nav__btn" data-section="rewards">🏆 Belohnungen</button>
+         <button class="nav__btn" data-section="chronicle">📜 Chronik</button>
+         <button class="nav__btn" data-section="help">📖 Hilfe</button>
+       </nav>
+
+      <!-- SECTION: SHOPPING -->
+      <section id="shoppingSection" class="section section--active">
+        <div class="card">
+          <h2 class="card__title">🛒 Einkaufsliste</h2>
+          <div class="card__subtitle">Erfassen → Kaufen → Einräumen</div>
+          
+          <div class="form mb--2">
+            <div class="form__row">
+              <input type="text" id="shoppingItemName" class="form__input" placeholder="z.B. Milch">
+              <input type="text" id="shoppingItemNote" class="form__input" placeholder="Menge/Notiz" style="min-width:120px;">
+              <select id="shoppingItemCategory" class="form__input" style="min-width:220px;">
+                <option value="">Kategorie (auto)</option>
+                <option value="produce">🥕 Frisches Obst &amp; Gemüse</option>
+                <option value="chilled">🧊 Gekühlte Lebensmittel</option>
+                <option value="canned">🥫 Konserven</option>
+                <option value="ready">🍱 Fertig-Lebensmittel</option>
+                <option value="hygiene">🧼 Hygieneartikel</option>
+              </select>
+            </div>
+            <button id="btnAddItem" class="btn btn--primary btn--small">Zur Liste hinzufügen</button>
+          </div>
+          
+          <div id="shoppingProgress"></div>
+          <div id="shoppingList"></div>
+        </div>
+      </section>
+
+      <!-- SECTION: RECEIPT -->
+      <section id="billSection" class="section"></section>
+      <section id="inventorySection" class="section">
+        <div class="card">
+          <h2 class="card__title">📦 Vorräte</h2>
+          <div class="card__subtitle">Was haben wir wo?</div>
+          <div id="inventoryList"></div>
+        </div>
+      </section>
+
+      <!-- SECTION: RECIPES -->
+      <section id="recipesSection" class="section">
+        <div class="card">
+          <h2 class="card__title">🍳 Rezepte</h2>
+          <div class="card__subtitle">Was können wir kochen? Grün = alles vorhanden!</div>
+          <div id="recipesList"></div>
+        </div>
+      </section>
+
+      <!-- SECTION: MEALPLAN -->
+      <section id="mealplanSection" class="section">
+        <div class="card">
+          <h2 class="card__title">📅 Speiseplan</h2>
+          <div class="card__subtitle">Wochenplan: Mitnahme-Essen &amp; Abendessen einplanen, kochen &amp; Vorräte abbuchen</div>
+          <div id="mealplanContent"></div>
+        </div>
+      </section>
+
+      <!-- SECTION: REISEKASSE -->
+      <section id="reisekasseSection" class="section">
+        <div id="reisekasseContent"></div>
+      </section>
+
+      <!-- SECTION: QUESTS -->
+      <section id="questsSection" class="section">
+        <div class="card">
+          <h2 class="card__title">🎯 Quests</h2>
+          <div class="card__subtitle">Aufgaben erledigen und Punkte sammeln</div>
+          <div id="questsList"></div>
+        </div>
+      </section>
+
+      <!-- SECTION: TASKS -->
+      <section id="tasksSection" class="section">
+        <div class="card">
+          <h2 class="card__title">📝 Aufgaben</h2>
+          <div class="card__subtitle">Für mich oder alle · priorisiert</div>
+          <div id="tasksList"></div>
+        </div>
+      </section>
+
+      <!-- SECTION: REWARDS -->
+      <section id="rewardsSection" class="section">
+        <div class="card">
+          <h2 class="card__title">🏆 Belohnungen</h2>
+          <div class="card__subtitle">Punkte einlösen</div>
+          <div id="rewardsList"></div>
+        </div>
+      </section>
+
+       <!-- SECTION: CHRONICLE -->
+       <section id="chronicleSection" class="section">
+         <div class="card">
+           <h2 class="card__title">📜 Chronik</h2>
+           <div class="card__subtitle">Was war los? & Backup</div>
+           <div id="chronicleList"></div>
+         </div>
+       </section>
+
+       <!-- SECTION: ANALYTICS -->
+       <section id="analyticsSection" class="section">
+         <div id="analyticsContent"></div>
+       </section>
+
+       <!-- SECTION: DOCUMENTATION -->
+       <section id="documentationSection" class="section">
+         <div id="documentationContent"></div>
+       </section>
+
+       <!-- SECTION: HELP -->
+       <section id="helpSection" class="section"></section>
+    </div>
+  </div>
+
+  <script type="module" src="modules/app/app.js"></script>
+
+  <!-- Nuclear Reset Script -->
+  <script>
+    document.getElementById('nuclearReset').addEventListener('click', async () => {
+      const overlay = document.getElementById('dialogOverlay');
+      const titleEl = document.getElementById('dialogTitle');
+      const msgEl = document.getElementById('dialogMessage');
+      const input = document.getElementById('dialogInput');
+      const btnCancel = document.getElementById('dialogBtnCancel');
+      const btnOk = document.getElementById('dialogBtnOk');
+
+      titleEl.textContent = '🧹 Cache löschen?';
+      msgEl.textContent = 'Alle Caches und App-Daten werden gelöscht und neu geladen.\n\nDeine Daten bleiben erhalten!';
+      input.style.display = 'none';
+      btnCancel.style.display = 'block';
+      btnCancel.textContent = 'Abbrechen';
+      btnOk.textContent = 'Ja, löschen';
+
+      overlay.classList.add('dialog-overlay--active');
+
+      const handleConfirm = async () => {
+        overlay.classList.remove('dialog-overlay--active');
+        btnOk.onclick = null;
+        btnCancel.onclick = null;
+
+        // 1. Service Worker unregister
+        if ('serviceWorker' in navigator) {
+          try {
+            const regs = await navigator.serviceWorker.getRegistrations();
+            for (let reg of regs) {
+              await reg.unregister();
+              console.log('✅ SW unregistered');
+            }
+          } catch (e) {
+            console.error('SW unregister failed:', e);
+          }
+        }
+
+        // 2. Cache Storage löschen
+        if ('caches' in window) {
+          try {
+            const keys = await caches.keys();
+            for (let key of keys) {
+              await caches.delete(key);
+              console.log('✅ Cache deleted:', key);
+            }
+          } catch (e) {
+            console.error('Cache delete failed:', e);
+          }
+        }
+
+        // 3. Hard reload
+        await app.showDialog('✅ Erledigt!', 'App wird neu geladen...');
+        location.reload(true);
+      };
+
+      const handleCancel = () => {
+        overlay.classList.remove('dialog-overlay--active');
+        btnOk.onclick = null;
+        btnCancel.onclick = null;
+      };
+
+      btnOk.onclick = handleConfirm;
+      btnCancel.onclick = handleCancel;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# Lokale Entwicklungs-Konfiguration – nie einchecken
+modules/core/config.local.js
+
+# Lokale Backup-Dateien
+unser-nest-backup-*.json
+unser-nest-config-*.json
+
+# Testbilder / OCR-Input
+*.jpg
+*.jpeg
+*.png
+!icons/
+
+# Editor / IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+

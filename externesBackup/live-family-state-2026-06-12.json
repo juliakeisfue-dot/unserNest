@@ -1,0 +1,1115 @@
+{
+  "kind": "unsernest-config-bundle",
+  "schemaVersion": 1,
+  "exportedAt": "2026-06-12T08:20:32.114Z",
+  "activeUserId": "julia",
+  "sections": {
+    "core": {
+      "homeName": "unserNest",
+      "version": 347,
+      "lastSync": 1781252413517
+    },
+    "users": [
+      {
+        "id": "julia",
+        "name": "Julia",
+        "points": 5
+      },
+      {
+        "id": "christian",
+        "name": "Christian",
+        "points": 0
+      },
+      {
+        "id": "helena",
+        "name": "Helena",
+        "points": 0
+      },
+      {
+        "id": "elisabeth",
+        "name": "Elisabeth",
+        "points": 0
+      }
+    ],
+    "shoppingList": [
+      {
+        "id": "shop-mq9jleh6-v0uj3",
+        "name": "FrischHefe",
+        "note": "2 Würfel",
+        "status": "offen",
+        "createdAt": 1781185057674,
+        "updatedAt": 1781185057674,
+        "_deleted": false
+      },
+      {
+        "id": "shop-mq9jna1h-3ymit",
+        "name": "Sauerteig von Seitenbacher",
+        "note": "2 Tüten",
+        "status": "offen",
+        "createdAt": 1781185145237,
+        "updatedAt": 1781185145237,
+        "_deleted": false
+      },
+      {
+        "id": "shop-mq9jp32j-a9bil",
+        "name": "Weizenmehl",
+        "note": "",
+        "status": "offen",
+        "createdAt": 1781185229515,
+        "updatedAt": 1781185229515,
+        "_deleted": false
+      },
+      {
+        "id": "shop-mq9jpi3f-0hnad",
+        "name": "Haferflocken zart",
+        "note": "",
+        "status": "offen",
+        "createdAt": 1781185248987,
+        "updatedAt": 1781185248987,
+        "_deleted": false
+      },
+      {
+        "id": "shop-mq9jpshq-3jids",
+        "name": "Möhren",
+        "note": "",
+        "status": "offen",
+        "createdAt": 1781185262462,
+        "updatedAt": 1781185262462,
+        "_deleted": false
+      },
+      {
+        "id": "shop-mq9jqlyh-8cftb",
+        "name": "Butter",
+        "note": "",
+        "status": "offen",
+        "createdAt": 1781185300649,
+        "updatedAt": 1781185300649,
+        "_deleted": false
+      }
+    ],
+    "locations": {
+      "fridge": {
+        "id": "fridge",
+        "name": "🧊 Kühlschrank",
+        "items": [
+          {
+            "id": "item-1772869278880",
+            "name": "Porree",
+            "amount": "",
+            "expiry": null,
+            "addedAt": "2026-03-07T07:41:18.880Z",
+            "expiresAt": 1780641678880
+          },
+          {
+            "id": "item-1772869281582",
+            "name": "Staudensellerie",
+            "amount": "",
+            "expiry": null,
+            "addedAt": "2026-03-07T07:41:21.582Z",
+            "expiresAt": 1780641681582
+          },
+          {
+            "id": "item-1773039811770",
+            "name": "Käse",
+            "amount": "",
+            "storedAt": 1773039811770,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773039825693",
+            "name": "Schinken",
+            "amount": "",
+            "storedAt": 1773039825693,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773063425393",
+            "name": "Eier",
+            "amount": "6",
+            "storedAt": 1773063425393,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773064160964",
+            "name": "Butter",
+            "amount": "",
+            "storedAt": 1773064160964,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773486215252",
+            "name": "Laugen Semmeln",
+            "amount": "6",
+            "storedAt": 1773486215252,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773486218878",
+            "name": "Salat",
+            "amount": "",
+            "storedAt": 1773486218878,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773486259230",
+            "name": "Tortellini",
+            "amount": "",
+            "storedAt": 1773486259230,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773486262308",
+            "name": "Käse für Kässpätzle",
+            "amount": "",
+            "storedAt": 1773486262308,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773486266752",
+            "name": "Ofengemüse",
+            "amount": "Aubergine Zucchini Pilze",
+            "storedAt": 1773486266752,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773480779075",
+            "name": "Laugen Semmeln",
+            "amount": "6",
+            "storedAt": 1773480779075,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773480786085",
+            "name": "Griech Joghurt",
+            "amount": "",
+            "storedAt": 1773480786085,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773480798689",
+            "name": "Joghurt 10 %",
+            "amount": "Griechisch",
+            "storedAt": 1773480798689,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773480805289",
+            "name": "Salat",
+            "amount": "",
+            "storedAt": 1773480805289,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773480816428",
+            "name": "Griespudding",
+            "amount": "1",
+            "storedAt": 1773480816428,
+            "expiresAt": 1781510291958
+          },
+          {
+            "id": "item-1773722919647",
+            "name": "Möhren [vorher in der Microwelle gedünstet])",
+            "amount": "für Nudel-Wurst-Rettungsaktion",
+            "storedAt": 1773722919647,
+            "expiresAt": 1781505512583
+          },
+          {
+            "id": "item-1773722927034",
+            "name": "Nudeln",
+            "amount": "für Nudel-Wurst-Rettungsaktion",
+            "storedAt": 1773722927034,
+            "expiresAt": 1781505512583
+          },
+          {
+            "id": "item-1773722937749",
+            "name": "Wurst- oder Fleischreste",
+            "amount": "für Nudel-Wurst-Rettungsaktion",
+            "storedAt": 1773722937749,
+            "expiresAt": 1781505512583
+          },
+          {
+            "id": "item-1773722942957",
+            "name": "Wurst- oder Fleischreste",
+            "amount": "für Nudel-Wurst-Rettungsaktion",
+            "storedAt": 1773722942957,
+            "expiresAt": 1781505512583
+          },
+          {
+            "id": "item-1773722956120",
+            "name": "Gemüsereste (Paprika",
+            "amount": "für Nudel-Wurst-Rettungsaktion",
+            "storedAt": 1773722956120,
+            "expiresAt": 1781505512583
+          },
+          {
+            "id": "item-1773735775554",
+            "name": "Köttbulla",
+            "amount": "für Ballspiele",
+            "storedAt": 1773735775554,
+            "expiresAt": 1781510448921
+          },
+          {
+            "id": "item-1773735792814",
+            "name": "Kartoffelknödel",
+            "amount": "für Ballspiele",
+            "storedAt": 1773735792814,
+            "expiresAt": 1781510448921
+          },
+          {
+            "id": "item-1773772938627",
+            "name": "Griesdessert",
+            "amount": "",
+            "storedAt": 1773772938627,
+            "expiresAt": 1781598464972
+          },
+          {
+            "id": "item-1773850850014",
+            "name": "Teriyaki Sauce",
+            "amount": "1",
+            "storedAt": 1773850850014,
+            "expiresAt": 1781674640931
+          },
+          {
+            "id": "item-1773915953505",
+            "name": "Fisch",
+            "amount": "für panierter Fisch mit Beilage nach Wahl",
+            "storedAt": 1773915953505,
+            "expiresAt": 1781747971970
+          },
+          {
+            "id": "item-1773985665284",
+            "name": "Teriyaki Sauce",
+            "amount": "1",
+            "storedAt": 1773985665284,
+            "expiresAt": 1781758084998
+          },
+          {
+            "id": "item-1774327211783",
+            "name": "Speck",
+            "amount": "für Wurst Reste mit Bratkartoffeln und Salat",
+            "storedAt": 1774327211783,
+            "expiresAt": 1782270623461
+          },
+          {
+            "id": "item-1774327215826",
+            "name": "Bratwurstspiralen",
+            "amount": "für Bratwurstspirale mit Kartoffelsalat",
+            "storedAt": 1774327215826,
+            "expiresAt": 1782270623464
+          },
+          {
+            "id": "item-1775034299268",
+            "name": "Margarine",
+            "amount": "für Obstkuchen",
+            "storedAt": 1775034299268,
+            "expiresAt": 1783008657315
+          },
+          {
+            "id": "item-1775824049485",
+            "name": "Frühlingsrollen",
+            "amount": "1",
+            "storedAt": 1775824049485,
+            "expiresAt": 1783623592431
+          }
+        ],
+        "maxAgeDays": 90,
+        "updatedAt": 1781184322811,
+        "_deleted": false
+      },
+      "cabinet": {
+        "id": "cabinet",
+        "name": "🗄️ Apothekenschrank",
+        "items": [
+          {
+            "id": "item-1772869253825",
+            "name": "Schwarz Tee",
+            "amount": "",
+            "expiry": null,
+            "addedAt": "2026-03-07T07:40:53.825Z",
+            "expiresAt": 1835941253825
+          },
+          {
+            "id": "item-1772869256523",
+            "name": "Früchtetee",
+            "amount": "",
+            "expiry": null,
+            "addedAt": "2026-03-07T07:40:56.523Z",
+            "expiresAt": 1835941256523
+          },
+          {
+            "id": "item-1772869259733",
+            "name": "Kaffee",
+            "amount": "",
+            "expiry": null,
+            "addedAt": "2026-03-07T07:40:59.733Z",
+            "expiresAt": 1835941259733
+          },
+          {
+            "id": "item-1772963141346",
+            "name": "Tee",
+            "amount": "",
+            "storedAt": 1772963141346,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773486190893",
+            "name": "Backerbsen",
+            "amount": "",
+            "storedAt": 1773486190893,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773480772585",
+            "name": "Ibis Baquttes",
+            "amount": "1",
+            "storedAt": 1773480772585,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773480782497",
+            "name": "Backerbsen",
+            "amount": "",
+            "storedAt": 1773480782497,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1775034303770",
+            "name": "Vanillinzucker",
+            "amount": "für Obstkuchen",
+            "storedAt": 1775034303770,
+            "expiresAt": 1838304657315
+          },
+          {
+            "id": "item-1775034308818",
+            "name": "Zucker",
+            "amount": "für Obstkuchen",
+            "storedAt": 1775034308818,
+            "expiresAt": 1838304657315
+          },
+          {
+            "id": "item-1775034315826",
+            "name": "Zucker",
+            "amount": "für Obstkuchen",
+            "storedAt": 1775034315826,
+            "expiresAt": 1838304657315
+          }
+        ],
+        "maxAgeDays": 730,
+        "updatedAt": 1781184322811,
+        "_deleted": false
+      },
+      "storage": {
+        "id": "storage",
+        "name": "📦 Lager",
+        "items": [
+          {
+            "id": "item-1772869073867",
+            "name": "Zwiebel",
+            "amount": "",
+            "expiry": "2026-03-07",
+            "addedAt": "2026-03-07T07:37:53.867Z",
+            "expiresAt": 1835941073867
+          },
+          {
+            "id": "item-1772869263593",
+            "name": "Bolognese Würmischung",
+            "amount": "",
+            "expiry": null,
+            "addedAt": "2026-03-07T07:41:03.593Z",
+            "expiresAt": 1835941263593
+          },
+          {
+            "id": "item-1772869266503",
+            "name": "Asiasuppe",
+            "amount": "",
+            "expiry": null,
+            "addedAt": "2026-03-07T07:41:06.503Z",
+            "expiresAt": 1835941266503
+          },
+          {
+            "id": "item-1772869269932",
+            "name": "Asiawürze",
+            "amount": "",
+            "expiry": null,
+            "addedAt": "2026-03-07T07:41:09.932Z",
+            "expiresAt": 1835941269932
+          },
+          {
+            "id": "item-1773060211626",
+            "name": "Milch",
+            "amount": "",
+            "storedAt": 1773060211626,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773060221962",
+            "name": "Essiggurken",
+            "amount": "",
+            "storedAt": 1773060221962,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773486194883",
+            "name": "Kartoffeln",
+            "amount": "",
+            "storedAt": 1773486194883,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773486198160",
+            "name": "Milch 1,5%",
+            "amount": "",
+            "storedAt": 1773486198160,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773486202486",
+            "name": "Ibis Baquttes",
+            "amount": "1",
+            "storedAt": 1773486202486,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773486270929",
+            "name": "Obst",
+            "amount": "Äpfel Bananen",
+            "storedAt": 1773486270929,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773486275719",
+            "name": "Säfte",
+            "amount": "",
+            "storedAt": 1773486275719,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773480790583",
+            "name": "Kartoffeln",
+            "amount": "",
+            "storedAt": 1773480790583,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773480795455",
+            "name": "Milch 1,5%",
+            "amount": "",
+            "storedAt": 1773480795455,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773480811017",
+            "name": "Tomaten",
+            "amount": "",
+            "storedAt": 1773480811017,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773772933035",
+            "name": "🍍 in Scheiben",
+            "amount": "1",
+            "storedAt": 1773772933035,
+            "expiresAt": 1836898064972
+          },
+          {
+            "id": "item-1774174279693",
+            "name": "Toilettenpapier",
+            "amount": "",
+            "storedAt": 1774174279693,
+            "expiresAt": 1837393759464
+          },
+          {
+            "id": "item-1774174283586",
+            "name": "Küchenrolle",
+            "amount": "",
+            "storedAt": 1774174283586,
+            "expiresAt": 1837393759465
+          },
+          {
+            "id": "item-1774174286913",
+            "name": "Haferflocken",
+            "amount": "",
+            "storedAt": 1774174286913,
+            "expiresAt": 1837393759465
+          },
+          {
+            "id": "item-1774174296034",
+            "name": "Burgerbrötchen",
+            "amount": "",
+            "storedAt": 1774174296034,
+            "expiresAt": 1837393759465
+          },
+          {
+            "id": "item-1774174300738",
+            "name": "Tee, schwarz",
+            "amount": "",
+            "storedAt": 1774174300738,
+            "expiresAt": 1837393759465
+          },
+          {
+            "id": "item-1774174305681",
+            "name": "Bananen",
+            "amount": "",
+            "storedAt": 1774174305681,
+            "expiresAt": 1837393759465
+          }
+        ],
+        "maxAgeDays": 730,
+        "updatedAt": 1781184322811,
+        "_deleted": false
+      },
+      "terrace": {
+        "id": "terrace",
+        "name": "🌿 Terrasse",
+        "items": [
+          {
+            "id": "item-1773649312274",
+            "name": "Hochbeet",
+            "amount": "",
+            "storedAt": 1773649312274,
+            "expiresAt": 1836809891958
+          }
+        ],
+        "maxAgeDays": 730,
+        "updatedAt": 1781184322811,
+        "_deleted": false
+      },
+      "loc-1773486239430": {
+        "id": "loc-1773486239430",
+        "name": "📦 Bad",
+        "items": [
+          {
+            "id": "item-1773486251576",
+            "name": "Rasierzeug",
+            "amount": "",
+            "storedAt": 1773486251576,
+            "expiresAt": 1836809891958
+          },
+          {
+            "id": "item-1773486254269",
+            "name": "Duschgel",
+            "amount": "",
+            "storedAt": 1773486254269,
+            "expiresAt": 1836809891958
+          }
+        ],
+        "_deleted": false,
+        "maxAgeDays": 730
+      }
+    },
+    "recipes": [
+      {
+        "id": "ruehrei",
+        "name": "Rührei",
+        "ingredients": ["Eier", "Milch", "Butter"],
+        "link": "https://www.chefkoch.de/rs/s0/ruehrei/Rezepte.html",
+        "difficulty": "einfach",
+        "time": "10 Min",
+        "servings": 2
+      },
+      {
+        "id": "nudeln-tomate",
+        "name": "Nudeln mit Tomatensoße",
+        "ingredients": ["Nudeln", "Passata", "Zwiebeln", "Knoblauch", "Olivenöl"],
+        "link": "https://www.chefkoch.de/rs/s0/nudeln+tomatensoße/Rezepte.html",
+        "difficulty": "einfach",
+        "time": "20 Min",
+        "servings": 4
+      },
+      {
+        "id": "kaesebrot",
+        "name": "Käsebrot",
+        "ingredients": ["Brot", "Käse", "Butter"],
+        "link": "https://www.chefkoch.de/rs/s0/kaesebrot/Rezepte.html",
+        "difficulty": "sehr einfach",
+        "time": "5 Min",
+        "servings": 1
+      },
+      {
+        "id": "muesli",
+        "name": "Müsli mit Milch",
+        "ingredients": ["Müsli", "Milch", "Joghurt", "Obst"],
+        "link": "https://www.chefkoch.de/rs/s0/muesli/Rezepte.html",
+        "difficulty": "sehr einfach",
+        "time": "5 Min",
+        "servings": 1
+      },
+      {
+        "id": "pfannkuchen",
+        "name": "Pfannkuchen",
+        "ingredients": ["Mehl", "Eier", "Milch", "Zucker", "Butter"],
+        "link": "https://www.chefkoch.de/rs/s0/pfannkuchen/Rezepte.html",
+        "difficulty": "einfach",
+        "time": "20 Min",
+        "servings": 4
+      },
+      {
+        "id": "recipe-1773722706345",
+        "name": "Nudel-Wurst-Rettungsaktion",
+        "ingredients": ["Nudeln", "Wurst- oder Fleischreste", "Zwiebeln", "Gemüsereste"],
+        "link": "https://www.chefkoch.de/rezepte/3421781509737842/Nudel-Wuerstchen-Auflauf.html",
+        "difficulty": "sehr einfach",
+        "time": "20",
+        "servings": 3,
+        "updatedAt": 1773733257476
+      },
+      {
+        "id": "recipe-1773735724160",
+        "name": "Ballspiele",
+        "ingredients": ["Köttbulla", "Kartoffelknödel", "Tomatensauce"],
+        "link": "https://www.chefkoch.de/rs/s0/Ballspiele/Rezepte.html",
+        "difficulty": "einfach",
+        "time": "?",
+        "servings": 2,
+        "_deleted": false,
+        "createdAt": 1773735724160,
+        "updatedAt": 1773735724160
+      },
+      {
+        "id": "recipe-1773915874325",
+        "name": "panierter Fisch mit Beilage nach Wahl",
+        "ingredients": ["Fisch", "Mayonnaise", "Semmelbrösel", "Mehl", "Butter"],
+        "link": "https://www.chefkoch.de/rezepte/2451051386063109/Kabeljaufilet-mit-Mayonnaisen-Panade.html",
+        "difficulty": "einfach",
+        "time": "?",
+        "servings": 2,
+        "_deleted": false,
+        "createdAt": 1773915874325,
+        "updatedAt": 1773915874325
+      },
+      {
+        "id": "recipe-1774327038721",
+        "name": "Wurst Reste mit Bratkartoffeln und Salat",
+        "ingredients": ["Kartoffeln", "Speck", "Zwiebeln", "Möhren", "Sellerie", "Wurst"],
+        "link": "https://www.chefkoch.de/rs/s0/Wurst%20Reste%20mit%20Bratkartoffeln%20und%20Salat/Rezepte.html",
+        "difficulty": "einfach",
+        "time": "?",
+        "servings": 2,
+        "_deleted": false,
+        "createdAt": 1774327038721,
+        "updatedAt": 1774327038721
+      },
+      {
+        "id": "recipe-1774327144655",
+        "name": "Bratwurstspirale mit Kartoffelsalat",
+        "ingredients": ["Kartoffeln", "Bratwurstspiralen"],
+        "link": "https://www.chefkoch.de/rs/s0/Bratwurstspirale%20mit%20Kartoffelsalat/Rezepte.html",
+        "difficulty": "einfach",
+        "time": "?",
+        "servings": 2,
+        "_deleted": false,
+        "createdAt": 1774327144655,
+        "updatedAt": 1774327144655
+      },
+      {
+        "id": "recipe-1774955950703",
+        "name": "Obstkuchen",
+        "ingredients": ["Margarine", "Vanillinzucker", "Mehl", "Backpulver", "Gelatine", "Puddingpulver", "Zucker", "Milch", "Crème fraîche", "Tortenguss"],
+        "link": "https://www.chefkoch.de/rezepte/1431611248013092/Obstgarten.html",
+        "difficulty": "mittel",
+        "time": "45 min",
+        "servings": 2,
+        "_deleted": false,
+        "createdAt": 1774955950703,
+        "updatedAt": 1774955950703
+      }
+    ],
+    "mealPlan": {
+      "weekOffset": 0,
+      "activeMeals": ["lunchbox", "dinner"],
+      "slots": {
+        "2026-03-17:dinner": {
+          "recipeId": "recipe-1773722706345",
+          "servings": 4,
+          "cooked": true,
+          "assignedAt": 1773733295440,
+          "cookedAt": 1773903016408,
+          "ratings": [
+            {
+              "userId": "elisabeth",
+              "stars": 3,
+              "ratedAt": 1773903029285
+            }
+          ]
+        },
+        "2026-03-18:dinner": {
+          "recipeId": "recipe-1773735724160",
+          "servings": 4,
+          "cooked": true,
+          "assignedAt": 1773735810565,
+          "cookedAt": 1773903007285,
+          "ratings": [
+            {
+              "userId": "elisabeth",
+              "stars": 3,
+              "ratedAt": 1773903033678
+            }
+          ]
+        }
+      },
+      "updatedAt": 1773903033678
+    },
+    "quests": [
+      {
+        "id": "waesche-waschen",
+        "title": "Wäsche waschen",
+        "description": "Schmutzwäsche sortieren und in die Waschmaschine.",
+        "points": 10,
+        "repeatable": true,
+        "completed": true,
+        "completedAt": 1774321791257,
+        "completedBy": "julia",
+        "dueDate": null,
+        "dependsOn": null,
+        "_deleted": false
+      },
+      {
+        "id": "waesche-trocknen",
+        "title": "Wäsche trocknen",
+        "description": "Nasse Wäsche aufhängen oder in den Trockner.",
+        "points": 10,
+        "repeatable": true,
+        "dependsOn": "waesche-waschen",
+        "completed": false,
+        "completedAt": null,
+        "completedBy": null,
+        "dueDate": null,
+        "_deleted": true,
+        "updatedAt": 1773062175215
+      },
+      {
+        "id": "waesche-einraeumen",
+        "title": "Wäsche einräumen",
+        "description": "Trockene Wäsche zusammenlegen und verräumen.",
+        "points": 15,
+        "repeatable": true,
+        "dependsOn": null,
+        "completed": false,
+        "completedAt": null,
+        "completedBy": null,
+        "dueDate": null,
+        "updatedAt": 1773062197146,
+        "_deleted": true
+      },
+      {
+        "id": "zimmer-aufraeumen",
+        "title": "Zimmer aufräumen",
+        "points": 20,
+        "dependsOn": null,
+        "_deleted": true,
+        "updatedAt": 1773903135576,
+        "description": "Spielzeug einsammeln, Bücher ins Regal, Boden frei machen.",
+        "defaultAssignee": "helena",
+        "repeatDays": 3,
+        "completed": false,
+        "completedAt": null,
+        "completedBy": null,
+        "dueDate": null
+      },
+      {
+        "id": "muell-rausbringen",
+        "title": "Müll rausbringen",
+        "description": "Alle Mülleimer leeren und Tüten rausbringen.",
+        "points": 5,
+        "repeatable": true,
+        "completed": true,
+        "completedAt": 1774785346158,
+        "completedBy": "christian",
+        "dueDate": null,
+        "dependsOn": null,
+        "_deleted": false
+      },
+      {
+        "id": "spuelen",
+        "title": "Spülen",
+        "description": "Abwasch machen oder Spülmaschine einräumen.",
+        "points": 10,
+        "repeatable": true,
+        "completed": false,
+        "completedAt": null,
+        "completedBy": null,
+        "dueDate": null,
+        "dependsOn": null,
+        "_deleted": false
+      },
+      {
+        "id": "custom-1773039895530",
+        "title": "Wäsche trocknen",
+        "description": "",
+        "points": 10,
+        "completed": false,
+        "repeatable": true,
+        "dependsOn": "waesche-waschen",
+        "dueDate": null,
+        "defaultAssignee": null,
+        "completedAt": null,
+        "completedBy": null,
+        "_deleted": true,
+        "createdAt": 1773039895530,
+        "updatedAt": 1773062142182
+      },
+      {
+        "id": "custom-1773039920224",
+        "title": "Wäsche abhängen",
+        "description": "",
+        "points": 10,
+        "completed": false,
+        "repeatable": true,
+        "dependsOn": null,
+        "dueDate": null,
+        "defaultAssignee": null,
+        "completedAt": null,
+        "completedBy": null,
+        "_deleted": true,
+        "createdAt": 1773039920224,
+        "updatedAt": 1773062211126
+      },
+      {
+        "id": "custom-1773040605036",
+        "title": "Wäsche trocknen",
+        "description": "Wäsche aus WaMa auf Trockner",
+        "points": 10,
+        "completed": false,
+        "repeatable": false,
+        "dependsOn": "waesche-waschen",
+        "dueDate": null,
+        "defaultAssignee": null,
+        "completedAt": null,
+        "completedBy": null,
+        "_deleted": false,
+        "createdAt": 1773040605036,
+        "updatedAt": 1773040605036
+      },
+      {
+        "id": "custom-1773041343443",
+        "title": "Wäsche trocknen",
+        "description": "",
+        "points": 10,
+        "completed": false,
+        "repeatable": true,
+        "dependsOn": "waesche-waschen",
+        "dueDate": null,
+        "defaultAssignee": null,
+        "completedAt": null,
+        "completedBy": null,
+        "_deleted": true,
+        "createdAt": 1773041343443,
+        "updatedAt": 1773062162397
+      },
+      {
+        "id": "custom-1773060276930",
+        "title": "Wäsche trocknen",
+        "description": "Wäsche von Waschmaschine auf Trockner",
+        "points": 10,
+        "completed": false,
+        "repeatable": true,
+        "dependsOn": "waesche-waschen",
+        "dueDate": null,
+        "defaultAssignee": null,
+        "completedAt": null,
+        "completedBy": null,
+        "_deleted": true,
+        "createdAt": 1773060276930,
+        "updatedAt": 1773062131764
+      },
+      {
+        "id": "custom-1773062080945",
+        "title": "Wäsche trocknen",
+        "description": "Wäsche aus der WaMa auf den Trockner",
+        "points": 10,
+        "completed": false,
+        "repeatable": true,
+        "dependsOn": "waesche-waschen",
+        "dueDate": null,
+        "defaultAssignee": null,
+        "completedAt": null,
+        "completedBy": null,
+        "_deleted": true,
+        "createdAt": 1773062080945,
+        "updatedAt": 1773062127086
+      },
+      {
+        "id": "custom-1773062262446",
+        "title": "Wäsche raus aus dem Bad",
+        "description": "runter vom Trockner ab in die Zimmer",
+        "points": 10,
+        "completed": false,
+        "repeatable": true,
+        "dependsOn": "custom-1773040605036",
+        "dueDate": null,
+        "defaultAssignee": null,
+        "completedAt": null,
+        "completedBy": null,
+        "_deleted": false,
+        "createdAt": 1773062262446,
+        "updatedAt": 1773062262446
+      },
+      {
+        "id": "custom-1773064208938",
+        "title": "Fahrräder pflegen",
+        "description": "abschmieren, Bremsbelege erneuern, Reifen aufpumpen",
+        "points": 20,
+        "completed": true,
+        "repeatable": true,
+        "dependsOn": null,
+        "dueDate": null,
+        "defaultAssignee": null,
+        "_deleted": false,
+        "createdAt": 1773064208938,
+        "updatedAt": 1773064208938,
+        "completedAt": 1773064271176,
+        "completedBy": "christian"
+      },
+      {
+        "id": "custom-1773903169129",
+        "title": "Zimmer aufräumen",
+        "description": "Boden frei, Müll raus",
+        "points": 10,
+        "completed": true,
+        "repeatable": true,
+        "dependsOn": null,
+        "dueDate": null,
+        "defaultAssignee": null,
+        "completedAt": 1773903311986,
+        "completedBy": "helena",
+        "_deleted": false,
+        "createdAt": 1773903169129,
+        "updatedAt": 1773903169129
+      },
+      {
+        "id": "custom-mq9jan3w-mfw0d",
+        "title": "Hausaufgaben/lernen",
+        "description": "Hausaufgaben erledigt/ für Schule gelernt",
+        "points": 10,
+        "completed": false,
+        "repeatable": true,
+        "dependsOn": null,
+        "dueDate": null,
+        "defaultAssignee": null,
+        "completedAt": null,
+        "completedBy": null,
+        "_deleted": false,
+        "createdAt": 1781184555644,
+        "updatedAt": 1781184555644
+      }
+    ],
+    "rewards": [
+      {
+        "id": "fernsehzeit-30",
+        "title": "30 Minuten Fernsehzeit",
+        "cost": 30,
+        "availableFrom": null,
+        "availableUntil": null
+      },
+      {
+        "id": "fernsehzeit-60",
+        "title": "60 Minuten Fernsehzeit",
+        "cost": 50,
+        "availableFrom": null,
+        "availableUntil": null
+      },
+      {
+        "id": "uebernachtung",
+        "title": "Übernachtung bei Freund:in",
+        "cost": 80,
+        "availableFrom": null,
+        "availableUntil": null
+      },
+      {
+        "id": "ausflug",
+        "title": "Ausflug wählen",
+        "cost": 100,
+        "availableFrom": null,
+        "availableUntil": null
+      },
+      {
+        "id": "suessigkeit",
+        "title": "Süßigkeit nach Wahl",
+        "cost": 15,
+        "availableFrom": null,
+        "availableUntil": null
+      }
+    ],
+    "reisekasse": {
+      "rules": [
+        {
+          "id": "rule-1781184615265",
+          "title": "Christian zahlt 5 EUR",
+          "description": "Wenn Christian am Tag nicht einkaufen war",
+          "amountCents": 500,
+          "userIds": ["christian"],
+          "appliesToAll": false,
+          "active": true,
+          "exceptionNote": "Bei Einspruch: Beweis durchs Handy",
+          "createdAt": 1781184615265,
+          "updatedAt": 1781184615265
+        },
+        {
+          "id": "rule-1781184625371",
+          "title": "Julia zahlt 5 EUR",
+          "description": "Wenn Julia am Esstisch das Handy benutzt",
+          "amountCents": 500,
+          "userIds": ["julia"],
+          "appliesToAll": false,
+          "active": true,
+          "exceptionNote": "Bei Einspruch: Beweis durchs Handy ohne Strafe",
+          "createdAt": 1781184625371,
+          "updatedAt": 1781184625371
+        },
+        {
+          "id": "rule-1781184635482",
+          "title": "Helena zahlt 2 EUR",
+          "description": "Handy am Esstisch",
+          "amountCents": 200,
+          "userIds": ["helena"],
+          "appliesToAll": false,
+          "active": true,
+          "exceptionNote": null,
+          "createdAt": 1781184635482,
+          "updatedAt": 1781184635482
+        },
+        {
+          "id": "rule-1781184645593",
+          "title": "Elisabeth zahlt 2 EUR",
+          "description": "Handy am Esstisch",
+          "amountCents": 200,
+          "userIds": ["elisabeth"],
+          "appliesToAll": false,
+          "active": true,
+          "exceptionNote": null,
+          "createdAt": 1781184645593,
+          "updatedAt": 1781184645593
+        },
+        {
+          "id": "rule-1781184655704",
+          "title": "Alle zahlen 5 EUR",
+          "description": "Politisch inkorrekte Äußerungen",
+          "amountCents": 500,
+          "userIds": [],
+          "appliesToAll": true,
+          "active": true,
+          "exceptionNote": "Bei Einspruch darf ein Handy zur Prüfung ohne Strafe benutzt werden",
+          "createdAt": 1781184655704,
+          "updatedAt": 1781184655704
+        }
+      ],
+      "transactions": [
+        {
+          "id": "tx-1781184700000",
+          "userId": "julia",
+          "userName": "Julia",
+          "amountCents": 500,
+          "reason": "Handy am Tisch (test Zahlung)",
+          "ruleId": "rule-1781184625371",
+          "occurredAt": 1781184700000,
+          "settledAt": null,
+          "createdAt": 1781184700000,
+          "updatedAt": 1781184700000
+        }
+      ],
+      "statements": [],
+      "updatedAt": 1781184700000
+    }
+  }
+}
+
